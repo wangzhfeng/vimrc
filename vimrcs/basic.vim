@@ -161,18 +161,46 @@ set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
+    set guioptions-=m
     set guioptions-=T
-    set guioptions-=e
+    set guioptions+=e
     set t_Co=256
     set guitablabel=%M\ %t
+    set guioptions-=i
+    set showtabline=1
+    set guifont=Consolas:h13:cANSI
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
+"
+"  文件编码
+"  中文乱码的解决方法：
+"  encoding是vim内部使用的字符编码方式，vim内部所有的
+"  buffer、寄存器、脚本中的字符串等，全都使用该编码。
+"  如果文件的编码与encoding不一致的时候，vim在启动时
+"  把文件编码转换为encoding。推荐将encoding设置为utf8，
+"  为了避免在非UTF8的系统如Windows下，菜单和系统提示
+"  出现乱码，需要同时增加以下配置：
+"  set language=zh_CN.UTF-8
+"  language message zh_CN.UTF-8
+"
+" 菜单编码
+set langmenu=zh_CN.utf-8
+"解决提示框乱码
+language messages zh_CN.utf-8
+
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+" 判断编码时，依次尝试以下编码
+" cp936 简体中文（windows only）
+" euc-cn 简体中文（Unix only）
+" cp950 繁体中文（big5的Unix叫法）
+" bit5 繁体中文（cp950的windows叫法）
+" ucs-bom 
+set fencs=ucs-bom,utf-8,cp936,big5,latin1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
