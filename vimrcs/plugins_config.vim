@@ -166,3 +166,9 @@ nnoremap <silent> <leader>c :call SyntasticCheckCoffeescript()<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_enabled=0
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Rainbow Parentheses
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:rainbow_active = 0 "0 if you want to enable it later via :RainbowToggle
